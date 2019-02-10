@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">My-History</string>
+
+    <string name="user_name">이름을 입력해주세요 : </string>
+    <string name="user_birthday">생일을 입력해주세요 : </string>
+    <string name="user_gender">성별을 입력해주세요 : </string>
+    <string name="user_man">남자</string>
+    <string name="user_woman">여자</string>
+
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+
+
 </resources>
