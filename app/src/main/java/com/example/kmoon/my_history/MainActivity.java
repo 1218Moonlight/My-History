@@ -8,18 +8,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    protected sharedPreferences myInfoSp;
+    protected HashMap<String, String> infoMap = new HashMap<String, String>();
 
     protected Button mainOk;
     protected EditText enterName, enterBirthday;
     protected RadioGroup radioGroup;
+    protected AppCompatActivity appActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.setContentView(R.layout.activity_main);
+        this.appActivity = this;
 
-        bind();
+        this.myInfoSp = new sharedPreferences(this.appActivity, "myInfo");
+        Log.d("test", this.myInfoSp.getPrefer());
+
+        this.bind();
     }
 
     @Override
@@ -33,15 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d("test", "enterBirthday is empty");
                     break;
                 }
-                Log.d("test", this.enterName.getText().toString());
-                Log.d("test", this.enterBirthday.getText().toString());
+                this.infoMap.put("name", this.enterName.getText().toString());
+                this.infoMap.put("birthday", this.enterBirthday.getText().toString());
                 if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainMan) {
-                    Log.d("test", "남자");
-                } else if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainWoman){
-                    Log.d("test", "여자");
+                    this.infoMap.put("gender", getResources().getString(R.string.user_man));
+                } else if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainWoman) {
+                    this.infoMap.put("gender", getResources().getString(R.string.user_woman));
                 } else {
-                    Log.d("test", "성별 미선택");
+                    this.infoMap.put("gender", "empty == gender");
                 }
+                this.myInfoSp.savePrefer(this.infoMap.toString());
+                Log.d("test", this.myInfoSp.getPrefer());
                 break;
         }
     }

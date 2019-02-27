@@ -1,0 +1,41 @@
+package com.example.kmoon.my_history;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.support.v7.app.AppCompatActivity;
+
+public class sharedPreferences {
+
+    private String key;
+    private String defString = "empty";
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor spe;
+
+
+    sharedPreferences(AppCompatActivity compatActivity, String key) {
+        this.key = key;
+        this.sp = compatActivity.getSharedPreferences(this.key, Context.MODE_PRIVATE);
+        this.spe = this.sp.edit();
+
+    }
+
+    public String getPrefer() {
+        return this.sp.getString(this.key, defString);
+    }
+
+    public void savePrefer(String msg) {
+        this.spe.putString(this.key, msg);
+        this.spe.commit();
+    }
+
+    public void removePrefer() {
+        this.spe.remove(this.key);
+        this.spe.commit();
+    }
+
+    public void removeAllPrefer() {
+        this.spe.clear();
+        this.spe.commit();
+    }
+}
