@@ -12,21 +12,26 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    protected sharedPreferences myInfoSp;
+    protected SharedDB myInfoSp;
     protected HashMap<String, String> infoMap = new HashMap<String, String>();
+
+    protected Dialog dl;
 
     protected Button mainOk;
     protected EditText enterName, enterBirthday;
     protected RadioGroup radioGroup;
-    protected AppCompatActivity appActivity;
+    protected AppCompatActivity compatActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
-        this.appActivity = this;
+        this.compatActivity = this;
 
-        this.myInfoSp = new sharedPreferences(this.appActivity, "myInfo");
+//        this.dl = new Dialog(compatActivity);
+//        this.dl.show("hello", "hi");
+
+        this.myInfoSp = new SharedDB(this.compatActivity, "myInfo");
         Log.d("test", this.myInfoSp.getPrefer());
 
         this.bind();
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainWoman) {
                     this.infoMap.put("gender", getResources().getString(R.string.user_woman));
                 } else {
-                    this.infoMap.put("gender", "empty == gender");
+                    this.infoMap.put("gender", "empty");
                 }
                 this.myInfoSp.savePrefer(this.infoMap.toString());
                 Log.d("test", this.myInfoSp.getPrefer());

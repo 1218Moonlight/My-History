@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
-public class sharedPreferences {
+public class SharedDB {
 
     private String key;
     private String defString = "empty";
@@ -13,7 +13,7 @@ public class sharedPreferences {
     private SharedPreferences.Editor spe;
 
 
-    sharedPreferences(AppCompatActivity compatActivity, String key) {
+    SharedDB(AppCompatActivity compatActivity, String key) {
         this.key = key;
         this.sp = compatActivity.getSharedPreferences(this.key, Context.MODE_PRIVATE);
         this.spe = this.sp.edit();
