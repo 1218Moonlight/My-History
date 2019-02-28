@@ -2,7 +2,6 @@ package com.example.kmoon.my_history;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.kmoon.my_history.base.DefaultActivity;
 
-public class MyInfoActivity extends AppCompatActivity implements View.OnClickListener {
+public class MyInfoActivity extends DefaultActivity implements View.OnClickListener {
     protected Button mainOk;
     protected EditText enterName, enterBirthday;
     protected RadioGroup radioGroup;
@@ -36,16 +35,16 @@ public class MyInfoActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(this, getString(R.string.user_birthday), Toast.LENGTH_SHORT).show();
                     break;
                 }
-//                this.infoMap.put("name", this.enterName.getText().toString());
-//                this.infoMap.put("birthday", this.enterBirthday.getText().toString());
+                this.infoMap.put("name", this.enterName.getText().toString());
+                this.infoMap.put("birthday", this.enterBirthday.getText().toString());
                 if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainMan) {
-//                    this.infoMap.put("gender", getString(R.string.user_man));
+                    this.infoMap.put("gender", getString(R.string.user_man));
                 } else if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainWoman) {
-//                    this.infoMap.put("gender", getString(R.string.user_woman));
+                    this.infoMap.put("gender", getString(R.string.user_woman));
                 } else {
-//                    this.infoMap.put("gender", "empty");
+                    this.infoMap.put("gender", "empty");
                 }
-//                this.myInfoSp.savePrefer(this.infoMap.toString());
+                this.myInfoSp.savePrefer(this.infoMap.toString());
                 Toast.makeText(this, getString(R.string.user_complete), Toast.LENGTH_SHORT).show();
                 break;
         }
