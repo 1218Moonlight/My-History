@@ -1,40 +1,28 @@
 package com.example.kmoon.my_history;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
-import java.util.HashMap;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    protected SharedDB myInfoSp;
-    protected HashMap<String, String> infoMap = new HashMap<String, String>();
-
-    protected Dialog dl;
+public class MainActivity extends DefaultActivity implements View.OnClickListener {
 
     protected Button mainOk;
     protected EditText enterName, enterBirthday;
     protected RadioGroup radioGroup;
-    protected AppCompatActivity compatActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
-        this.compatActivity = this;
-
-//        this.dl = new Dialog(compatActivity);
-//        this.dl.show("hello", "hi");
-
-        this.myInfoSp = new SharedDB(this.compatActivity, "myInfo");
-        Log.d("test", this.myInfoSp.getPrefer());
 
         this.bind();
+
+        Log.d("testtest", this.myInfoSp.getPrefer());
     }
 
     @Override
@@ -42,10 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.mainOk:
                 if (this.enterName.getText().toString().equals("")) {
-                    Log.d("test", "enterName is empty");
+                    Toast.makeText(this, getResources().getString(R.string.user_name), Toast.LENGTH_SHORT).show();
                     break;
                 } else if (this.enterBirthday.getText().toString().equals("")) {
-                    Log.d("test", "enterBirthday is empty");
+                    Toast.makeText(this, getResources().getString(R.string.user_birthday), Toast.LENGTH_SHORT).show();
                     break;
                 }
                 this.infoMap.put("name", this.enterName.getText().toString());
@@ -58,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     this.infoMap.put("gender", "empty");
                 }
                 this.myInfoSp.savePrefer(this.infoMap.toString());
-                Log.d("test", this.myInfoSp.getPrefer());
+                Toast.makeText(this, getResources().getString(R.string.user_complete), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

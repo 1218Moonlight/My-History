@@ -13,7 +13,7 @@ public class SharedDB {
     private SharedPreferences.Editor spe;
 
 
-    SharedDB(AppCompatActivity compatActivity, String key) {
+    public SharedDB(AppCompatActivity compatActivity, String key) {
         this.key = key;
         this.sp = compatActivity.getSharedPreferences(this.key, Context.MODE_PRIVATE);
         this.spe = this.sp.edit();

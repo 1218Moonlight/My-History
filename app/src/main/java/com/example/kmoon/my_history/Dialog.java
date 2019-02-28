@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 public class Dialog {
     private AlertDialog.Builder adb;
 
-    Dialog(AppCompatActivity compatActivity) {
+    public Dialog(AppCompatActivity compatActivity) {
         this.adb = new AlertDialog.Builder(compatActivity);
     }
 
