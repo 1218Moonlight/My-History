@@ -2,105 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="4">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:text="hello" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_name" />
-
-        <EditText
-            android:id="@+id/mainEnterName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="text" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:text="test" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_birthday" />
-
-        <EditText
-            android:id="@+id/mainEnterBirthday"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:inputType="text" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/user_gender" />
-
-        <RadioGroup
-            android:id="@+id/mainRadioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <RadioButton
-                android:id="@+id/mainMan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/user_man" />
-
-            <RadioButton
-                android:id="@+id/mainWoman"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/user_woman" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:weightSum="1">
-
-        <Button
-            android:id="@+id/mainOk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ok" />
-    </LinearLayout>
 </LinearLayout>

@@ -1,7 +1,9 @@
-package com.example.kmoon.my_history;
+package com.example.kmoon.my_history.utils;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import com.example.kmoon.my_history.R;
 
 public class OnBackPressedHandler {
     private AppCompatActivity compatActivity;

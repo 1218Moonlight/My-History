@@ -1,4 +1,4 @@
-package com.example.kmoon.my_history;
+package com.example.kmoon.my_history.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

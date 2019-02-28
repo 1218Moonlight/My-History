@@ -1,8 +1,12 @@
-package com.example.kmoon.my_history;
+package com.example.kmoon.my_history.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.kmoon.my_history.utils.Dialog;
+import com.example.kmoon.my_history.utils.OnBackPressedHandler;
+import com.example.kmoon.my_history.utils.SharedDB;
 
 import java.util.HashMap;
 

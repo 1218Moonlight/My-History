@@ -1,4 +1,4 @@
-package com.example.kmoon.my_history;
+package com.example.kmoon.my_history.utils;
 
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
