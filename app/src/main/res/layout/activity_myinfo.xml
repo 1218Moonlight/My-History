@@ -40,12 +40,18 @@
             android:layout_height="wrap_content"
             android:text="@string/user_birthday" />
 
-        <EditText
-            android:id="@+id/mainEnterBirthday"
+        <Button
+            android:id="@+id/mainBirthdayBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="text" />
+            android:text="달력 열기"/>
+        <!--<EditText-->
+            <!--android:id="@+id/mainEnterBirthday"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:inputType="text" />-->
     </LinearLayout>
 
     <LinearLayout
