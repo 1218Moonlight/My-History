@@ -1,5 +1,6 @@
 package com.example.kmoon.my_history.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,5 +36,10 @@ public class DefaultActivity extends AppCompatActivity {
     public void onBackPressed() {
 //        super.onBackPressed();
         this.obp.onBackPressed();
+    }
+
+    public void startActivityIntent(Class<?> cls){
+        startActivity(new Intent(this, cls));
+        this.finish();
     }
 }

@@ -46,6 +46,7 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
                 }
                 this.myInfoSp.savePrefer(this.infoMap.toString());
                 Toast.makeText(this, getString(R.string.user_complete), Toast.LENGTH_SHORT).show();
+                this.startActivityIntent(MainActivity.class);
                 break;
         }
     }

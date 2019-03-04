@@ -1,35 +1,25 @@
 package com.example.kmoon.my_history;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.kmoon.my_history.base.DefaultActivity;
 
-public class MainActivity extends DefaultActivity implements View.OnClickListener {
+public class MainActivity extends DefaultActivity {
 
-    protected Button btn;
+    protected TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
-        this.btn = findViewById(R.id.test);
-        this.btn.setOnClickListener(this);
+        this.test = findViewById(R.id.testHello);
 
-        Log.d("testtest", this.myInfoSp.getPrefer());
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.test:
-                Log.d("testtest", "testBtn click");
-                startActivity(new Intent(this, MyInfoActivity.class));
-                break;
+        if (this.myInfoSp.getPrefer().equals("empty")) {
+            startActivityIntent(MyInfoActivity.class);
+        } else {
+            this.test.setText(this.myInfoSp.getPrefer());
         }
     }
 }
