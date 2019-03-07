@@ -22,10 +22,10 @@ public class MainActivity extends DefaultActivity {
         } else {
             this.bind();
             try {
-                JSONObject myInfoJson = new JSONObject(this.myInfoSp.getPrefer());
-                this.name.setText(myInfoJson.getString(getString(R.string.user_name)));
-                this.birthday.setText(myInfoJson.getString(getString(R.string.user_birthday)));
-                this.gender.setText(myInfoJson.getString(getString(R.string.user_gender)));
+                this.myinfoJson.init(new JSONObject(this.myInfoSp.getPrefer()));
+                this.name.setText(this.myinfoJson.getString(getString(R.string.user_name)));
+                this.birthday.setText(this.myinfoJson.getString(getString(R.string.user_birthday)));
+                this.gender.setText(this.myinfoJson.getString(getString(R.string.user_gender)));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
