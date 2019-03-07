@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_name" />
+            android:text="@string/user_name_info" />
 
         <EditText
             android:id="@+id/mainEnterName"
@@ -38,20 +38,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/user_birthday" />
+            android:text="@string/user_birthday_info" />
 
         <Button
             android:id="@+id/mainBirthdayBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="달력 열기"/>
+            android:text="@string/date_open_dialog" />
         <!--<EditText-->
-            <!--android:id="@+id/mainEnterBirthday"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:inputType="text" />-->
+        <!--android:id="@+id/mainEnterBirthday"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:inputType="text" />-->
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/user_gender" />
+            android:text="@string/user_gender_info" />
 
         <RadioGroup
             android:id="@+id/mainRadioGroup"

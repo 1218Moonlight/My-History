@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.kmoon.my_history.R;
 import com.example.kmoon.my_history.utils.Dialog;
+import com.example.kmoon.my_history.utils.Json;
 import com.example.kmoon.my_history.utils.OnBackPressedHandler;
 import com.example.kmoon.my_history.utils.SharedDB;
 
-import java.util.HashMap;
 
 public class DefaultActivity extends AppCompatActivity {
 
     protected SharedDB myInfoSp;
-    protected HashMap<String, String> infoMap = new HashMap<String, String>();
+    protected Json myinfoJson = new Json();
 
     protected Dialog dl;
 
@@ -24,7 +25,7 @@ public class DefaultActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.myInfoSp = new SharedDB(this, "myInfo");
+        this.myInfoSp = new SharedDB(this, getString(R.string.default_myInfo), getString(R.string.default_empty));
 
         this.dl = new Dialog(this);
 
@@ -38,7 +39,7 @@ public class DefaultActivity extends AppCompatActivity {
         this.obp.onBackPressed();
     }
 
-    public void startActivityIntent(Class<?> cls){
+    public void startActivityIntent(Class<?> cls) {
         startActivity(new Intent(this, cls));
         this.finish();
     }

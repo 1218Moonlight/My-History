@@ -7,21 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 public class SharedDB {
 
     private String key;
-    private String defString = "empty";
-
+    private String defValue;
     private SharedPreferences sp;
     private SharedPreferences.Editor spe;
 
 
-    public SharedDB(AppCompatActivity compatActivity, String key) {
+    public SharedDB(AppCompatActivity compatActivity, String key, String defValue) {
         this.key = key;
+        this.defValue = defValue;
         this.sp = compatActivity.getSharedPreferences(this.key, Context.MODE_PRIVATE);
         this.spe = this.sp.edit();
 
     }
 
     public String getPrefer() {
-        return this.sp.getString(this.key, defString);
+        return this.sp.getString(this.key, this.defValue);
     }
 
     public void savePrefer(String msg) {

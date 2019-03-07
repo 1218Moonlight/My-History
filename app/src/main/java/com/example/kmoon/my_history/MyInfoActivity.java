@@ -16,7 +16,7 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
     protected Button mainOk, birthBtn;
     protected EditText enterName;
     protected RadioGroup radioGroup;
-    protected String selectDate = "empty";
+    protected String selectDate;
     protected DatePickerDialog datePickerDialog;
 
     @Override
@@ -33,22 +33,22 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.mainOk:
                 if (this.enterName.getText().toString().equals("")) {
-                    Toast.makeText(this, getString(R.string.user_name), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.user_name_info), Toast.LENGTH_SHORT).show();
                     break;
-                } else if (this.selectDate.equals("empty")) {
-                    Toast.makeText(this, getString(R.string.user_birthday), Toast.LENGTH_SHORT).show();
+                } else if (this.selectDate.equals(getString(R.string.default_empty))) {
+                    Toast.makeText(this, getString(R.string.user_birthday_info), Toast.LENGTH_SHORT).show();
                     break;
                 }
-                this.infoMap.put("name", this.enterName.getText().toString());
-                this.infoMap.put("birthday", selectDate);
+                this.myinfoJson.put(getString(R.string.user_name), this.enterName.getText().toString());
+                this.myinfoJson.put(getString(R.string.user_birthday), selectDate);
                 if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainMan) {
-                    this.infoMap.put("gender", getString(R.string.user_man));
+                    this.myinfoJson.put(getString(R.string.user_gender), getString(R.string.user_man));
                 } else if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainWoman) {
-                    this.infoMap.put("gender", getString(R.string.user_woman));
+                    this.myinfoJson.put(getString(R.string.user_gender), getString(R.string.user_woman));
                 } else {
-                    this.infoMap.put("gender", "empty");
+                    this.myinfoJson.put(getString(R.string.user_gender), getString(R.string.default_empty));
                 }
-                this.myInfoSp.savePrefer(this.infoMap.toString());
+                this.myInfoSp.savePrefer(this.myinfoJson.toString());
                 Toast.makeText(this, getString(R.string.user_complete), Toast.LENGTH_SHORT).show();
                 this.startActivityIntent(MainActivity.class);
                 break;
@@ -70,11 +70,15 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
 
         this.radioGroup = findViewById(R.id.mainRadioGroup);
 
+        this.selectDate = getString(R.string.default_empty);
+
         this.datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 selectDate = "" + year + "-" + month + "-" + dayOfMonth;
-                Toast.makeText(getApplicationContext(), year + "년" + month + "월" + dayOfMonth + "일", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), year + getString(R.string.date_year) +
+                        month + getString(R.string.date_month) + dayOfMonth +
+                        getString(R.string.date_dayOfMonth), Toast.LENGTH_SHORT).show();
             }
         }, 1988, 1, 1);
     }

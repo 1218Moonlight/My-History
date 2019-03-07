@@ -1,14 +1,23 @@
 <resources>
     <string name="app_name">My-History</string>
 
+    <string name="default_empty">empty</string>
+    <string name="default_myInfo">myInfo</string>
     <string name="default_check_onBackPressed">버튼을 한번 더 누르시면 종료됩니다.</string>
 
-    <string name="user_name">이름을 입력해주세요</string>
-    <string name="user_birthday">생일을 입력해주세요</string>
-    <string name="user_gender">성별을 입력해주세요</string>
+    <string name="date_year">년</string>
+    <string name="date_month">월</string>
+    <string name="date_dayOfMonth">일</string>
+    <string name="date_open_dialog">달력 열기</string>
+
+    <string name="user_name">name</string>
+    <string name="user_birthday">birthday</string>
+    <string name="user_gender">gender</string>
+    <string name="user_name_info">이름을 입력해주세요</string>
+    <string name="user_birthday_info">생일을 입력해주세요</string>
+    <string name="user_gender_info">성별을 입력해주세요</string>
     <string name="user_man">남자</string>
     <string name="user_woman">여자</string>
-
     <string name="user_complete">기본 설정이 완료되었습니다.</string>
 
     <string name="ok">확인</string>
