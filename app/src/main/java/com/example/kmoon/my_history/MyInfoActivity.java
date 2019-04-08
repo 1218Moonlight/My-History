@@ -75,9 +75,9 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
         this.datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                selectDate = "" + year + "-" + (month+1) + "-" + dayOfMonth;
+                selectDate = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
                 Toast.makeText(getApplicationContext(), year + getString(R.string.date_year) +
-                        (month+1) + getString(R.string.date_month) + dayOfMonth +
+                        (month + 1) + getString(R.string.date_month) + dayOfMonth +
                         getString(R.string.date_dayOfMonth), Toast.LENGTH_SHORT).show();
             }
         }, 1988, 0, 1);
