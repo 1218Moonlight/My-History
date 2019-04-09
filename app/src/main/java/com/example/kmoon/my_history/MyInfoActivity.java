@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kmoon.my_history.base.DefaultActivity;
+import com.example.kmoon.my_history.utils.photo;
 
 import java.io.InputStream;
 
@@ -26,6 +27,7 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
     protected String selectDate;
     protected DatePickerDialog datePickerDialog;
     protected ImageView selectPhoto;
+    protected photo photoUtils;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mainSelectPhoto:
-                this.test();
+                this.photoUtils.openGallery();
                 break;
             case R.id.mainOk:
                 if (this.enterName.getText().toString().equals("")) {
@@ -80,6 +82,8 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
         this.selectPhoto = findViewById(R.id.mainSelectPhoto);
         this.selectPhoto.setOnClickListener(this);
 
+        this.photoUtils = new photo(this);
+
         this.enterName = findViewById(R.id.mainEnterName);
 
         this.radioGroup = findViewById(R.id.mainRadioGroup);
@@ -95,26 +99,19 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
                         getString(R.string.date_dayOfMonth), Toast.LENGTH_SHORT).show();
             }
         }, 1988, 0, 1);
-    }
 
-    private void test() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 try {
                     InputStream in = getContentResolver().openInputStream(data.getData());
                     Bitmap img = BitmapFactory.decodeStream(in);
                     in.close();
-                    selectPhoto.setImageBitmap(img);
+                    this.selectPhoto.setImageBitmap(img);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
