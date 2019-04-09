@@ -5,7 +5,6 @@ import java.util.Calendar;
 public class age {
 
     private int year, month, date;
-    private int[] today = new int[3];
 
     public age(int year, int month, int date) {
         this.year = year;
@@ -19,7 +18,7 @@ public class age {
         // today[0] == year
         // today[1] == month
         // today[2] == date
-        this.today = this.getToday();
+        int[] today = this.getToday();
 
         int dateCount1 = 0, dateCount2 = 0, yearDiff = 0, dayDiff = 0;
         if (this.year > today[0]) {

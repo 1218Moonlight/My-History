@@ -26,17 +26,7 @@ public class MainActivity extends DefaultActivity {
             try {
                 this.myinfoJson.init(new JSONObject(this.myInfoSp.getPrefer()));
                 this.name.setText(this.myinfoJson.getString(getString(R.string.user_name)));
-                String birth = this.myinfoJson.getString(getString(R.string.user_birthday));
-                if (birth != null && !birth.isEmpty()) {
-                    // birthArray[0] == year
-                    // birthArray[1] == month
-                    // birthArray[2] == date
-                    String[] birthArray = birth.split("-");
-                    myAge = new age(Integer.parseInt(birthArray[0]), Integer.parseInt(birthArray[1]), Integer.parseInt(birthArray[2]));
-                    this.birthday.setText(this.myinfoJson.getString(getString(R.string.user_birthday))+"("+myAge.ageDiff()+")");
-                } else {
-                    this.birthday.setText(this.myinfoJson.getString(getString(R.string.user_birthday)));
-                }
+                initBirthday();
                 this.gender.setText(this.myinfoJson.getString(getString(R.string.user_gender)));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -49,5 +39,19 @@ public class MainActivity extends DefaultActivity {
         this.name = findViewById(R.id.main_user_name);
         this.birthday = findViewById(R.id.main_user_birthday);
         this.gender = findViewById(R.id.main_user_gender);
+    }
+
+    private void initBirthday(){
+        String birth = this.myinfoJson.getString(getString(R.string.user_birthday));
+        if (birth != null && !birth.isEmpty()) {
+            // birthArray[0] == year
+            // birthArray[1] == month
+            // birthArray[2] == date
+            String[] birthArray = birth.split("-");
+            myAge = new age(Integer.parseInt(birthArray[0]), Integer.parseInt(birthArray[1]), Integer.parseInt(birthArray[2]));
+            this.birthday.setText(this.myinfoJson.getString(getString(R.string.user_birthday)) + "(" + myAge.ageDiff() + ")");
+        } else {
+            this.birthday.setText(this.myinfoJson.getString(getString(R.string.user_birthday)));
+        }
     }
 }

@@ -1,16 +1,23 @@
 package com.example.kmoon.my_history;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kmoon.my_history.base.DefaultActivity;
+
+import java.io.InputStream;
 
 public class MyInfoActivity extends DefaultActivity implements View.OnClickListener {
     protected Button mainOk, birthBtn;
@@ -18,6 +25,7 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
     protected RadioGroup radioGroup;
     protected String selectDate;
     protected DatePickerDialog datePickerDialog;
+    protected ImageView selectPhoto;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +39,9 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.mainSelectPhoto:
+                this.test();
+                break;
             case R.id.mainOk:
                 if (this.enterName.getText().toString().equals("")) {
                     Toast.makeText(this, getString(R.string.user_name_info), Toast.LENGTH_SHORT).show();
@@ -66,6 +77,9 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
         this.birthBtn = findViewById(R.id.mainBirthdayBtn);
         this.birthBtn.setOnClickListener(this);
 
+        this.selectPhoto = findViewById(R.id.mainSelectPhoto);
+        this.selectPhoto.setOnClickListener(this);
+
         this.enterName = findViewById(R.id.mainEnterName);
 
         this.radioGroup = findViewById(R.id.mainRadioGroup);
@@ -81,5 +95,30 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
                         getString(R.string.date_dayOfMonth), Toast.LENGTH_SHORT).show();
             }
         }, 1988, 0, 1);
+    }
+
+    private void test() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    InputStream in = getContentResolver().openInputStream(data.getData());
+                    Bitmap img = BitmapFactory.decodeStream(in);
+                    in.close();
+                    selectPhoto.setImageBitmap(img);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

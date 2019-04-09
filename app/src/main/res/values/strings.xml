@@ -13,6 +13,7 @@
     <string name="user_name">name</string>
     <string name="user_birthday">birthday</string>
     <string name="user_gender">gender</string>
+    <string name="user_photo_info">사진을 선택해주세요.</string>
     <string name="user_name_info">이름을 입력해주세요</string>
     <string name="user_birthday_info">생일을 입력해주세요</string>
     <string name="user_gender_info">성별을 입력해주세요</string>
