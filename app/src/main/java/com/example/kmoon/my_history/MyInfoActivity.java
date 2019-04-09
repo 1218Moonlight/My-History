@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -45,13 +46,17 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
                 this.photoUtils.openGallery();
                 break;
             case R.id.mainOk:
-                if (this.enterName.getText().toString().equals("")) {
+                if (this.photoUtils.isNull(this.selectPhoto)) {
+                    Toast.makeText(this, getString(R.string.user_photo_info), Toast.LENGTH_SHORT).show();
+                    break;
+                } else if (this.enterName.getText().toString().equals("")) {
                     Toast.makeText(this, getString(R.string.user_name_info), Toast.LENGTH_SHORT).show();
                     break;
                 } else if (this.selectDate.equals(getString(R.string.default_empty))) {
                     Toast.makeText(this, getString(R.string.user_birthday_info), Toast.LENGTH_SHORT).show();
                     break;
                 }
+                // TODO: save selectPhoto Bitmap
                 this.myinfoJson.put(getString(R.string.user_name), this.enterName.getText().toString());
                 this.myinfoJson.put(getString(R.string.user_birthday), selectDate);
                 if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainMan) {
