@@ -10,12 +10,13 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
+            android:id="@+id/main_user_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="image" />
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

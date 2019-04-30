@@ -10,6 +10,7 @@
     <string name="date_dayOfMonth">일</string>
     <string name="date_open_dialog">달력 열기</string>
 
+    <string name="user_img">img</string>
     <string name="user_name">name</string>
     <string name="user_birthday">birthday</string>
     <string name="user_gender">gender</string>

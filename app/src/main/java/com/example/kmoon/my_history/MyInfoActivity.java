@@ -56,7 +56,9 @@ public class MyInfoActivity extends DefaultActivity implements View.OnClickListe
                     Toast.makeText(this, getString(R.string.user_birthday_info), Toast.LENGTH_SHORT).show();
                     break;
                 }
-                // TODO: save selectPhoto Bitmap
+
+                // TODO: Bitmap optimization. (size, type etc...) (save and read)
+                this.myinfoJson.put(getString(R.string.user_img), this.photoUtils.bitmapToBase64String(this.selectPhoto));
                 this.myinfoJson.put(getString(R.string.user_name), this.enterName.getText().toString());
                 this.myinfoJson.put(getString(R.string.user_birthday), selectDate);
                 if (this.radioGroup.getCheckedRadioButtonId() == R.id.mainMan) {
